@@ -9,8 +9,6 @@ ChioOS is a self-hosted personal Life OS — a desktop-first command center for 
 
 ## Screenshots
 
-![App Screenshots]()
-
 ### Home
 
 ![ChioOS Home](docs/screenshots/home.png)
