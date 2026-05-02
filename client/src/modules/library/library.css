@@ -1,0 +1,298 @@
+.library-page {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  
+  .library-loading {
+    padding: 28px;
+    border-radius: 24px;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border-soft);
+    color: var(--color-text-muted);
+  }
+  
+  .library-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 390px;
+    gap: 16px;
+    align-items: start;
+  }
+  
+  .library-main {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+  
+  .library-side {
+    min-width: 0;
+  }
+  
+  .library-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  
+  .library-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 155px 155px auto;
+    gap: 8px;
+  }
+  
+  .library-search {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+  
+  .library-search input,
+  .library-toolbar select,
+  .library-form input,
+  .library-form select,
+  .library-form textarea {
+    width: 100%;
+    border: 1px solid var(--color-border-soft);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: var(--color-surface-3);
+    color: var(--color-text-main);
+    outline: none;
+  }
+  
+  .library-page select {
+    color-scheme: dark;
+  }
+  
+  .library-page select option {
+    background: var(--color-surface);
+    color: var(--color-text-main);
+  }
+  
+  .library-search input:focus,
+  .library-toolbar select:focus,
+  .library-form input:focus,
+  .library-form select:focus,
+  .library-form textarea:focus {
+    border-color: rgba(78, 245, 242, 0.5);
+    box-shadow: 0 0 0 4px rgba(7, 143, 148, 0.16);
+  }
+  
+  .library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .library-card {
+    border-radius: 22px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 36%),
+      var(--color-surface-2);
+    border: 1px solid var(--color-border-soft);
+    box-shadow: var(--shadow-panel);
+    overflow: hidden;
+  }
+  
+  .library-card.expiring-soon {
+    border-color: rgba(214, 163, 79, 0.35);
+  }
+  
+  .library-card.expired {
+    border-color: rgba(212, 111, 111, 0.35);
+  }
+  
+  .library-card-main {
+    padding: 16px;
+  }
+  
+  .library-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  
+  .library-status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 5px 8px;
+    background: rgba(56, 214, 202, 0.1);
+    color: var(--color-accent);
+    border: 1px solid var(--color-border-soft);
+    font-size: 10px;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  
+  .library-status.needs_action {
+    background: rgba(214, 163, 79, 0.15);
+    color: var(--color-warning);
+  }
+  
+  .library-status.expired {
+    background: rgba(212, 111, 111, 0.14);
+    color: var(--color-danger);
+  }
+  
+  .library-status.archived {
+    background: rgba(143, 154, 146, 0.14);
+    color: var(--color-text-muted);
+  }
+  
+  .library-card h3 {
+    margin: 9px 0 8px;
+    color: var(--color-text-main);
+    font-size: 20px;
+    letter-spacing: -0.05em;
+  }
+  
+  .library-meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  
+  .library-meta-line span {
+    border-radius: 999px;
+    padding: 6px 9px;
+    background: rgba(7, 143, 148, 0.07);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border-soft);
+    font-size: 11px;
+    font-weight: 850;
+  }
+  
+  .library-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .library-card-actions a,
+  .library-card-actions button {
+    border: 1px solid var(--color-border-soft);
+    border-radius: 999px;
+    padding: 7px 10px;
+    background: rgba(7, 143, 148, 0.07);
+    color: var(--color-text-soft);
+    font-size: 11px;
+    font-weight: 900;
+  }
+  
+  .library-card-actions a:hover,
+  .library-card-actions button:hover {
+    color: var(--color-text-main);
+    background: rgba(7, 143, 148, 0.13);
+    border-color: rgba(78, 245, 242, 0.22);
+  }
+  
+  .library-card-actions button:last-child:hover {
+    background: rgba(212, 111, 111, 0.12);
+    color: var(--color-danger);
+    border-color: rgba(212, 111, 111, 0.28);
+  }
+  
+  .library-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    margin-bottom: 12px;
+  }
+  
+  .library-info-grid div {
+    min-width: 0;
+    padding: 10px;
+    border-radius: 14px;
+    background: rgba(7, 143, 148, 0.05);
+    border: 1px solid var(--color-border-soft);
+  }
+  
+  .library-info-grid span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  
+  .library-info-grid strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-text-soft);
+    font-size: 12px;
+  }
+  
+  .library-notes {
+    margin: 0;
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(7, 143, 148, 0.045);
+    color: var(--color-text-soft);
+    border: 1px solid var(--color-border-soft);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  
+  .sticky-form {
+    position: sticky;
+    top: 20px;
+  }
+  
+  .library-form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  
+  .library-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .library-form label {
+    color: var(--color-text-soft);
+    font-size: 12px;
+    font-weight: 800;
+  }
+  
+  .library-form input,
+  .library-form select,
+  .library-form textarea {
+    margin-top: 7px;
+  }
+  
+  .library-form input[type="file"] {
+    padding: 10px;
+  }
+  
+  .library-form textarea {
+    resize: vertical;
+  }
+  
+  .current-file-note {
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(7, 143, 148, 0.06);
+    border: 1px solid var(--color-border-soft);
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 800;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+  }

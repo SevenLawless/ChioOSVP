@@ -1,0 +1,118 @@
+CREATE DATABASE IF NOT EXISTS life_os_v1;
+
+USE life_os_v1;
+
+CREATE TABLE IF NOT EXISTS home_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  type ENUM('note', 'image') NOT NULL,
+  title VARCHAR(255),
+  content TEXT,
+  file_path VARCHAR(500),
+  x_position INT NOT NULL DEFAULT 100,
+  y_position INT NOT NULL DEFAULT 100,
+  width INT NOT NULL DEFAULT 240,
+  height INT NOT NULL DEFAULT 160,
+  z_index INT NOT NULL DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS expense_categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  type ENUM('income', 'expense') NOT NULL,
+  color VARCHAR(30),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS expense_transactions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_id INT,
+  type ENUM('income', 'expense') NOT NULL,
+  amount DECIMAL(10, 2) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  notes TEXT,
+  transaction_date DATE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (category_id) REFERENCES expense_categories(id)
+    ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS recurring_bills (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_id INT,
+  title VARCHAR(255) NOT NULL,
+  amount DECIMAL(10, 2) NOT NULL,
+  due_day INT NOT NULL,
+  is_active BOOLEAN NOT NULL DEFAULT true,
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (category_id) REFERENCES expense_categories(id)
+    ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS monthly_budgets (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_id INT,
+  month INT NOT NULL,
+  year INT NOT NULL,
+  amount DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (category_id) REFERENCES expense_categories(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS workout_sessions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  session_date DATE NOT NULL,
+  title VARCHAR(255),
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS workout_exercises (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  session_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  muscle_group VARCHAR(100),
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (session_id) REFERENCES workout_sessions(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS workout_sets (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  exercise_id INT NOT NULL,
+  set_number INT NOT NULL,
+  reps INT NOT NULL,
+  weight DECIMAL(10, 2),
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (exercise_id) REFERENCES workout_exercises(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS job_applications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  company VARCHAR(255) NOT NULL,
+  role VARCHAR(255) NOT NULL,
+  salary VARCHAR(100),
+  date_applied DATE,
+  status ENUM('wishlist', 'applied', 'interview', 'offer', 'rejected', 'ghosted') NOT NULL DEFAULT 'applied',
+  job_link VARCHAR(1000),
+  notes TEXT,
+  interview_date DATE,
+  follow_up_date DATE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
