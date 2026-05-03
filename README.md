@@ -69,7 +69,7 @@ Full stack developer. ChioOS is my personal life management system — built for
 
 
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)]([https://github.com/SevenLawless](https://law7less.com/))
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://law7less.com/)
 [![github](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SevenLawless)
 
 
