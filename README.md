@@ -47,10 +47,15 @@ Full stack developer. ChioOS is my personal life management system — built for
 ## Environment Variables
 
 PORT : default 4001
+
 DB_HOST : host
+
 DB_USER : username 
+
 DB_PASSWORD : password 
+
 DB_NAME : DB name
+
 UPLOADS_DIR : default ../uploads
 
 
